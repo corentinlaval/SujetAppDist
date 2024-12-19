@@ -1,0 +1,5 @@
+.main-content {
+  margin-left: 250px; /* Décale pour la barre latérale gauche */
+  margin-right: 300px; /* Décale pour la barre latérale droite */
+  padding: 20px;
+}

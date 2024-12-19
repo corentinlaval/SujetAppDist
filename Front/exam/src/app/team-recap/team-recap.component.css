@@ -1,0 +1,88 @@
+.recap-container {
+  width: 300px;
+  height: 100vh;
+  background-color: #f5f5f5;
+  color: #333;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #4caf50;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.recap-section {
+  margin-bottom: 30px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #4caf50;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+.team-item,
+.player-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.team-logo img,
+.player-photo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.team-info h4,
+.player-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.match-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.match-item p {
+  font-size: 14px;
+  color: #333;
+}
+
+.match-item small {
+  font-size: 12px;
+  color: #666;
+}
