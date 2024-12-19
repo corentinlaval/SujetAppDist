@@ -1,61 +1,61 @@
 <div class="add-player-container">
-  <h2>Add a New Player</h2>
-  <div class="form-layout">
-    <!-- Rectangle pour la photo -->
-    <div class="photo-section">
-      <div class="photo-preview">
-        <img *ngIf="player.photo" [src]="player.photo" alt="Player photo" />
-      </div>
-      <label for="photo" class="upload-label">Upload Photo</label>
-      <input
-        type="file"
-        id="photo"
-        name="photo"
-        accept="image/*"
-        (change)="onPhotoChange($event)"
-      />
+    <h2>Add a New Player</h2>
+    <div class="form-layout">
+        <!-- Section pour la photo -->
+        <div class="photo-section">
+            <div class="photo-preview">
+                <img *ngIf="player.photo" [src]="player.photo" alt="Player photo" />
+            </div>
+            <label for="photo" class="upload-label">Upload Photo</label>
+            <input
+                    type="file"
+                    id="photo"
+                    name="photo"
+                    accept="image/*"
+                    (change)="onPhotoChange($event)"
+            />
+        </div>
+
+        <!-- Formulaire -->
+        <form (ngSubmit)="onSubmit()" #playerForm="ngForm" class="form-fields">
+            <div class="form-group">
+                <label for="name">Player Name</label>
+                <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-control"
+                        [(ngModel)]="player.name"
+                        required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input
+                        type="text"
+                        id="position"
+                        name="position"
+                        class="form-control"
+                        [(ngModel)]="player.position"
+                        required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="team">Team</label>
+                <input
+                        type="text"
+                        id="team"
+                        name="team"
+                        class="form-control"
+                        [(ngModel)]="player.team"
+                />
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!playerForm.form.valid">
+                Add Player
+            </button>
+        </form>
     </div>
-
-    <!-- Formulaire -->
-    <form (ngSubmit)="onSubmit()" #playerForm="ngForm" class="form-fields">
-      <div class="form-group">
-        <label for="name">Player Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          class="form-control"
-          [(ngModel)]="player.name"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="position">Position</label>
-        <input
-          type="text"
-          id="position"
-          name="position"
-          class="form-control"
-          [(ngModel)]="player.position"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="team">Team</label>
-        <input
-          type="text"
-          id="team"
-          name="team"
-          class="form-control"
-          [(ngModel)]="player.team"
-        />
-      </div>
-
-      <button type="submit" class="btn btn-primary" [disabled]="!playerForm.form.valid">
-        Add Player
-      </button>
-    </form>
-  </div>
 </div>

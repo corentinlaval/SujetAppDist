@@ -1,4 +1,4 @@
-.add-player-container {
+.add-team-container {
   width: 100%;
   max-width: 700px;
   margin: 20px auto;
@@ -18,21 +18,14 @@ h2 {
   font-size: 18px;
 }
 
-.form-layout {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.photo-section {
+.logo-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  margin-bottom: 20px;
 }
 
-.photo-preview {
+.logo-preview {
   width: 150px;
   height: 150px;
   border: 2px dashed #4caf50;
@@ -44,7 +37,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-.photo-preview img {
+.logo-preview img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 8px;
@@ -66,7 +59,6 @@ input[type="file"] {
 .form-fields {
   display: flex;
   flex-direction: column;
-  flex: 2;
 }
 
 .form-group {
