@@ -1,5 +1,44 @@
+/* Bandeau supérieur */
+app-header {
+  position: fixed; /* Fixé en haut de la page */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Hauteur du bandeau */
+  background-color: #4caf50; /* Couleur du bandeau */
+  z-index: 1000; /* Plus élevé que les barres latérales */
+}
+
+/* Structure principale */
+.main-layout {
+  display: flex; /* Aligne les barres latérales et le contenu principal horizontalement */
+  margin-top: 60px; /* Décale le contenu sous le bandeau */
+  height: 100%; /* Ajuste la hauteur disponible après le bandeau */
+}
+
+/* Barre latérale gauche */
+app-sidebar {
+  position: relative; /* Change de `fixed` à `relative` pour respecter le flux du layout */
+  width: 250px;
+  height: 100%; /* Prend toute la hauteur du conteneur parent (main-layout) */
+  background-color: #f5f5f5;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  z-index: 999; /* En dessous du bandeau */
+}
+
+/* Barre latérale droite */
+app-team-recap {
+  position: relative; /* Change de `fixed` à `relative` pour respecter le flux du layout */
+  width: 300px;
+  height: 100%; /* Prend toute la hauteur du conteneur parent (main-layout) */
+  background-color: #f5f5f5;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  z-index: 999; /* En dessous du bandeau */
+}
+
+/* Contenu principal */
 .main-content {
-  margin-left: 250px; /* Décale pour la barre latérale gauche */
-  margin-right: 300px; /* Décale pour la barre latérale droite */
+  flex: 1; /* Prend tout l'espace horizontal disponible entre les barres latérales */
+  overflow-y: auto; /* Défilement si nécessaire */
   padding: 20px;
 }
