@@ -47,3 +47,8 @@
 .nav-links a:hover {
   color: #d4ffd4; /* Couleur au survol */
 }
+
+.logo-section a {
+  text-decoration: none; /* Supprime le soulignement */
+  color: inherit; /* Applique la couleur héritée */
+}

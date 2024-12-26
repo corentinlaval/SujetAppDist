@@ -87,3 +87,8 @@ p {
   font-size: 12px;
   color: #666;
 }
+
+.recap-container a {
+  text-decoration: none; /* Supprime le soulignement */
+  color: inherit; /* Applique la couleur héritée */
+}

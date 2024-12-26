@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-team-recap',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './team-recap.component.html',
   styleUrl: './team-recap.component.css'
