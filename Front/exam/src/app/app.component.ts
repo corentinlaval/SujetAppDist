@@ -5,10 +5,11 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 import {AddteamComponent} from "./addteam/addteam.component";
 import {TeamRecapComponent} from "./team-recap/team-recap.component";
 import {HeaderComponent} from "./header/header.component";
+import {HomeComponent} from './home/home.component';
 
 @Component({
   selector: 'app-root',
-  imports: [AddteamComponent, SidebarComponent, AddplayerComponent, TeamRecapComponent, HeaderComponent],
+  imports: [AddteamComponent, SidebarComponent, AddplayerComponent, TeamRecapComponent, HeaderComponent, HomeComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

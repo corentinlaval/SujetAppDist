@@ -106,3 +106,12 @@ h2 {
 .sidebar-container.collapsed {
   width: 50px; /* Largeur rétractée */
 }
+
+.menu-content a {
+  text-decoration: none; /* Supprime le soulignement */
+  color: inherit; /* Applique la couleur héritée */
+}
+
+.menu-content a h2 {
+  color: white; /* Garde la couleur blanche */
+}

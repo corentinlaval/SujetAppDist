@@ -3,7 +3,7 @@
     {{ isCollapsed ? '>' : '<' }}
   </button>
   <div class="menu-content" *ngIf="!isCollapsed">
-    <h2>Menu</h2>
+    <a routerLink="/home" routerLinkActive="active"><h2>Menu</h2></a>
     <ul class="menu-list">
       <li>
         <a routerLink="/add-player" routerLinkActive="active">Add Player</a>
