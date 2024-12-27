@@ -21,32 +21,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>1</td>
-      <td><img src="https://via.placeholder.com/50" alt="Player 1" /></td>
-      <td>John Doe</td>
-      <td>Forward</td>
-      <td>Team Alpha</td>
-      <td>150</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td><img src="https://via.placeholder.com/50" alt="Player 2" /></td>
-      <td>Jane Smith</td>
-      <td>Goalkeeper</td>
-      <td>Team Beta</td>
-      <td>140</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td><img src="https://via.placeholder.com/50" alt="Player 3" /></td>
-      <td>Jack Black</td>
-      <td>Defender</td>
-      <td>Team Gamma</td>
-      <td>130</td>
-      <td>20</td>
+    <tr *ngFor="let player of players; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <img ngSrc="player.profilePicturePath || 'https://via.placeholder.com/50'" alt="{{ player.name }}" fill/>
+      </td>
+      <td>{{ player.name }}</td>
+      <td>{{ player.position }}</td>
+      <td>{{ player.team?.name || 'Unknown Team' }}</td>
+      <td>{{ player.points }}</td>
+      <td>{{ player.matches || 'N/A' }}</td>
     </tr>
     </tbody>
   </table>
