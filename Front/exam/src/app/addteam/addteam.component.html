@@ -1,6 +1,6 @@
 <div class="add-team-container">
   <h2>Add a New Team</h2>
-  <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
+  <div class="form-layout">
     <!-- Section pour le logo -->
     <div class="logo-section">
       <div class="logo-preview">
@@ -16,8 +16,8 @@
       />
     </div>
 
-    <!-- Champs du formulaire -->
-    <div class="form-fields">
+    <!-- Formulaire -->
+    <form (ngSubmit)="onSubmit()" #teamForm="ngForm" class="form-fields">
       <div class="form-group">
         <label for="name">Team Name</label>
         <input
@@ -38,6 +38,7 @@
           name="city"
           class="form-control"
           [(ngModel)]="team.city"
+          required
         />
       </div>
 
@@ -55,6 +56,6 @@
       <button type="submit" class="btn btn-primary" [disabled]="!teamForm.form.valid">
         Add Team
       </button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

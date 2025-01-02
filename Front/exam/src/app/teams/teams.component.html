@@ -1,20 +1,12 @@
 <div class="team-list-container">
   <h1>Team Rankings</h1>
-  <div class="filter-options">
-    <label for="sort-teams">Sort by:</label>
-    <select id="sort-teams">
-      <option value="wins">Wins</option>
-      <option value="losses">Losses</option>
-      <option value="matches">Matches Played</option>
-    </select>
-  </div>
 
   <table class="team-table">
     <thead>
     <tr>
       <th>Rank</th>
       <th>Logo</th>
-      <th>Team Name</th>
+      <th>Name</th>
       <th>City</th>
       <th>Wins</th>
       <th>Losses</th>
@@ -22,32 +14,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>1</td>
-      <td><img src="https://via.placeholder.com/50" alt="Team 1 Logo" /></td>
-      <td>Team Alpha</td>
-      <td>Paris</td>
-      <td>20</td>
-      <td>5</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td><img src="https://via.placeholder.com/50" alt="Team 2 Logo" /></td>
-      <td>Team Beta</td>
-      <td>Lyon</td>
-      <td>18</td>
-      <td>7</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td><img src="https://via.placeholder.com/50" alt="Team 3 Logo" /></td>
-      <td>Team Gamma</td>
-      <td>Marseille</td>
-      <td>16</td>
-      <td>9</td>
-      <td>25</td>
+    <tr *ngFor="let team of teams; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <img [src]="team.logo || 'https://via.placeholder.com/50'" alt="{{ team.name }}" />
+      </td>
+      <td>{{ team.name }}</td>
+      <td>{{ team.city }}</td>
+      <td>{{ team.wins }}</td>
+      <td>{{ team.losses }}</td>
+      <td>{{ team.matchesPlayed || 'N/A' }}</td>
     </tr>
     </tbody>
   </table>

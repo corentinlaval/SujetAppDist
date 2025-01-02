@@ -16,4 +16,12 @@ export class PlayerService {
     console.log('getPlayers called');
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  addPlayer(player: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, player);
+  }
+
+  addPlayerWithPhoto(playerData: FormData): Observable<any> {
+    return this.http.post<any>(this.apiUrl, playerData); // Envoi des données au backend
+  }
 }
