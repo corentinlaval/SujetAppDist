@@ -24,4 +24,10 @@ export class PlayerService {
   addPlayerWithPhoto(playerData: FormData): Observable<any> {
     return this.http.post<any>(this.apiUrl, playerData); // Envoi des données au backend
   }
+
+  // Supprimer un joueur par ID
+  deletePlayer(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
 }

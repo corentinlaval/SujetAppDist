@@ -8,11 +8,13 @@ import {PlayersComponent} from './players/players.component';
 import {MatchesComponent} from './matches/matches.component';
 import {RankingsComponent} from './rankings/rankings.component';
 import {NewsComponent} from './news/news.component';
+import {DeleteplayerComponent} from './deleteplayer/deleteplayer.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirection par défaut
   { path: 'add-player', component: AddplayerComponent }, // Route pour ajouter un joueur
   { path: 'add-team', component: AddteamComponent }, // Route pour ajouter une équipe
+  { path: 'delete-player', component: DeleteplayerComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'players', component: PlayersComponent },
   { path: 'matches', component: MatchesComponent },
