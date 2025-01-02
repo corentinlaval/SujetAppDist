@@ -13,4 +13,11 @@ export class TeamsService {
   getTeams(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl);
   }
+  getAllTeams(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
+  deleteTeam(teamId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${teamId}`);
+  }
 }
