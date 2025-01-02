@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive} from '@angular/router';
-import {NgIf} from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    NgIf
-  ],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, NgIf],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  isCollapsed = false; // Propriété pour gérer l'état rétracté
+  isCollapsed = false; // État de la sidebar (ouverte/rétractée)
+  openSection: string | null = null; // Section actuellement ouverte
 
+  // Gestion de l'ouverture/fermeture de la sidebar
   toggleSidebar(): void {
-    this.isCollapsed = !this.isCollapsed; // Inverse l'état
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+  // Gestion de l'ouverture/fermeture des sections
+  toggleSection(section: string): void {
+    // Ouvre la section sélectionnée ou la referme si elle est déjà ouverte
+    this.openSection = this.openSection === section ? null : section;
   }
 }
