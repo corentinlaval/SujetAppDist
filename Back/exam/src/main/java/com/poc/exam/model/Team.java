@@ -1,9 +1,6 @@
 package com.poc.exam.model;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.List;
 
 @Entity
 @Table(name = "team")
@@ -13,10 +10,13 @@ public class Team {
     private Long id;
 
     private String name;
+    private String city;
+    private String stadium;
+    private Integer losses;
+    private Integer wins;
 
-    @OneToMany(mappedBy = "team")
-    @JsonIgnore // Pour éviter la boucle infinie lors de la sérialisation
-    private List<Player> players;
+    @Column(name = "logo_path")
+    private String logoPath; // Pour stocker l'emplacement ou l'URL du logo
 
     // Getters et setters
     public Long getId() {
@@ -27,6 +27,22 @@ public class Team {
         this.id = id;
     }
 
+    public Integer getLosses() {
+        return losses;
+    }
+
+    public void setLosses(Integer losses) {
+        this.losses = losses;
+    }
+
+    public Integer getWins() {
+        return wins;
+    }
+
+    public void setWins(Integer wins) {
+        this.wins = wins;
+    }
+
     public String getName() {
         return name;
     }
@@ -35,11 +51,27 @@ public class Team {
         this.name = name;
     }
 
-    public List<Player> getPlayers() {
-        return players;
+    public String getCity() {
+        return city;
     }
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStadium() {
+        return stadium;
+    }
+
+    public void setStadium(String stadium) {
+        this.stadium = stadium;
+    }
+
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
     }
 }

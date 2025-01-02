@@ -19,4 +19,12 @@ public class TeamService {
     public Team addTeam(Team team) {
         return teamRepository.save(team);
     }
+
+    public boolean deleteTeam(Long id) {
+        if (teamRepository.existsById(id)) {
+            teamRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }
