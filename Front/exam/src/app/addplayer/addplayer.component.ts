@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import {NgIf} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-addplayer',
@@ -16,12 +16,13 @@ export class AddplayerComponent implements OnInit {
   player = {
     name: '',
     position: '',
-    teamId: undefined, // ID de l'équipe sélectionnée
+    teamId: null, // Correction : initialise à null
     photo: '', // Base64 pour prévisualisation
     photoFile: null as File | null,
   };
 
   teams: any[] = []; // Liste des équipes
+  feedbackMessage: string | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +30,7 @@ export class AddplayerComponent implements OnInit {
     this.loadTeams(); // Charge les équipes disponibles
   }
 
+  // Charger la liste des équipes disponibles
   loadTeams(): void {
     this.http.get<any[]>('http://localhost:8080/api/teams').subscribe(
       (data) => {
@@ -40,6 +42,7 @@ export class AddplayerComponent implements OnInit {
     );
   }
 
+  // Gestion de l'image sélectionnée
   onPhotoChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -54,14 +57,20 @@ export class AddplayerComponent implements OnInit {
     }
   }
 
+  // Envoi du formulaire
   onSubmit(): void {
+    if (!this.player.name || !this.player.position) {
+      this.feedbackMessage = 'Please fill in all required fields.';
+      return;
+    }
+
     const playerData: any = {
       name: this.player.name,
       position: this.player.position,
       profilePictureBase64: this.player.photo || null,
     };
 
-    // Inclure teamId uniquement si renseigné
+    // Inclure teamId uniquement si une équipe est sélectionnée
     if (this.player.teamId) {
       playerData.teamId = this.player.teamId;
     }
@@ -69,21 +78,26 @@ export class AddplayerComponent implements OnInit {
     this.http.post('http://localhost:8080/api/players', playerData).subscribe(
       (response) => {
         console.log('Player added successfully:', response);
+        this.feedbackMessage = 'Player added successfully!';
+        alert(`Player ${this.player.name} added successfully!`);
         this.resetForm();
       },
       (error) => {
         console.error('Error adding player:', error);
+        this.feedbackMessage = 'Error adding player. Please try again.';
       }
     );
   }
 
+  // Réinitialisation du formulaire après soumission
   private resetForm(): void {
     this.player = {
       name: '',
       position: '',
-      teamId: undefined,
+      teamId: null,
       photo: '',
       photoFile: null,
     };
+    this.feedbackMessage = null;
   }
 }

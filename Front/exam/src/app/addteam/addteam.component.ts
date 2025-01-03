@@ -52,6 +52,7 @@ export class AddteamComponent {
     }).subscribe(
       (response) => {
         console.log('Team added successfully:', response);
+        alert(`Team ${this.team.name} added successfully!`);
         this.resetForm();
       },
       (error) => {
