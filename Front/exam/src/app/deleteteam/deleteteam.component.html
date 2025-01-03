@@ -3,7 +3,20 @@
 
   <!-- Afficher les informations de l'équipe sélectionnée -->
   <div *ngIf="selectedTeam" class="form-layout">
-    <div class="form-fields">
+    <!-- Section pour le logo -->
+    <div class="logo-section">
+      <div class="logo-preview">
+        <img
+          *ngIf="selectedTeam.logo"
+          [src]="selectedTeam.logo"
+          alt="Team logo"
+        />
+      </div>
+      <label class="upload-label">Team Logo</label>
+    </div>
+
+    <!-- Formulaire -->
+    <form class="form-fields">
       <div class="form-group">
         <label for="name">Team Name</label>
         <input
@@ -26,15 +39,26 @@
         />
       </div>
 
+      <div class="form-group">
+        <label for="stadium">Stadium</label>
+        <input
+          type="text"
+          id="stadium"
+          class="form-control"
+          [(ngModel)]="selectedTeam.stadium"
+          readonly
+        />
+      </div>
+
       <button
         type="button"
-        class="btn btn-primary"
+        class="btn btn-danger"
         [disabled]="!selectedTeam"
         (click)="onDeleteTeam()"
       >
         Delete Team
       </button>
-    </div>
+    </form>
   </div>
 
   <!-- Barre de recherche -->
@@ -51,6 +75,7 @@
   <ul class="search-results">
     <li *ngFor="let team of filteredTeams" (click)="selectTeam(team)">
       <div class="team-info">
+        <img *ngIf="team.logo" [src]="team.logo" alt="{{ team.name }}" />
         <div>
           <p><strong>Name:</strong> {{ team.name }}</p>
           <p><strong>City:</strong> {{ team.city }}</p>
