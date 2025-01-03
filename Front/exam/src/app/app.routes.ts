@@ -11,6 +11,7 @@ import {NewsComponent} from './news/news.component';
 import {DeleteplayerComponent} from './deleteplayer/deleteplayer.component';
 import {DeleteteamComponent} from './deleteteam/deleteteam.component';
 import {UpdatePlayerComponent} from './updateplayer/updateplayer.component';
+import {UpdateteamComponent} from './updateteam/updateteam.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirection par défaut
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'delete-player', component: DeleteplayerComponent },
   { path: 'delete-team', component: DeleteteamComponent },
   { path: 'update-player', component: UpdatePlayerComponent },
+  { path: 'update-team', component: UpdateteamComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'players', component: PlayersComponent },
   { path: 'matches', component: MatchesComponent },

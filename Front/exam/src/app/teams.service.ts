@@ -20,4 +20,9 @@ export class TeamsService {
   deleteTeam(teamId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${teamId}`);
   }
+
+  updateTeam(teamId: number, selectedTeam: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${teamId}`, selectedTeam);
+  }
+
 }
