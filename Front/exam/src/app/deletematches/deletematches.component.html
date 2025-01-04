@@ -1,1 +1,74 @@
-<p>deletematches works!</p>
+<div class="delete-match-container">
+  <h2>Delete a Match</h2>
+
+  <!-- Informations sur le match sélectionné -->
+  <div *ngIf="selectedMatch" class="form-layout">
+    <!-- Section Team 1 -->
+    <div class="team-section">
+      <div class="logo-preview">
+        <img *ngIf="selectedMatch.team1Logo" [src]="selectedMatch.team1Logo" alt="Team 1 Logo" />
+      </div>
+      <label>Team 1: {{ selectedMatch.team1Name }}</label>
+    </div>
+
+    <!-- VS Box -->
+    <div class="vs-box">VS</div>
+
+    <!-- Section Team 2 -->
+    <div class="team-section">
+      <div class="logo-preview">
+        <img *ngIf="selectedMatch.team2Logo" [src]="selectedMatch.team2Logo" alt="Team 2 Logo" />
+      </div>
+      <label>Team 2: {{ selectedMatch.team2Name }}</label>
+    </div>
+  </div>
+
+  <!-- Détails du match -->
+  <form class="form-fields" *ngIf="selectedMatch">
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" id="location" [(ngModel)]="selectedMatch.location" readonly />
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" [(ngModel)]="selectedMatch.date" readonly />
+    </div>
+
+    <div class="form-group">
+      <label for="time">Time</label>
+      <input type="time" id="time" [(ngModel)]="selectedMatch.time" readonly />
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!selectedMatch"
+      (click)="onDeleteMatch()"
+    >
+      Delete Match
+    </button>
+  </form>
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search for a match"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <!-- Résultats de recherche -->
+  <ul class="search-results">
+    <li *ngFor="let match of filteredMatches" (click)="selectMatch(match)">
+      <div class="match-info">
+        <p><strong>Teams:</strong> {{ match.team1Name }} vs {{ match.team2Name }}</p>
+        <p><strong>Location:</strong> {{ match.location }}</p>
+        <p><strong>Date:</strong> {{ match.date }}</p>
+        <p><strong>Time:</strong> {{ match.time }}</p>
+      </div>
+    </li>
+  </ul>
+</div>

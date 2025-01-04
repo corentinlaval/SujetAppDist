@@ -1,16 +1,20 @@
 <div class="match-list-container">
   <h1>Match Schedule</h1>
+
+  <!-- Options de filtre -->
   <div class="filter-options">
     <label for="sort-matches">Sort by:</label>
-    <select id="sort-matches">
+    <select id="sort-matches" [(ngModel)]="sortOption" (change)="onSortChange()">
       <option value="date">Date</option>
       <option value="team">Team</option>
     </select>
   </div>
 
+  <!-- Table des matchs -->
   <table class="match-table">
     <thead>
     <tr>
+      <th>#</th>
       <th>Date</th>
       <th>Home Team</th>
       <th>Score</th>
@@ -19,44 +23,29 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>2024-12-25</td>
+    <tr *ngFor="let match of sortedMatches; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ match.matchDate | date: 'dd/MM/yyyy' }}</td>
       <td>
-        <img src="https://via.placeholder.com/40" alt="Team Alpha Logo" />
-        Team Alpha
+        <div class="team-info">
+          <img
+            [src]="match.homeTeam?.logoPath || 'https://via.placeholder.com/50'"
+            alt="{{ match.homeTeam?.name }}"
+          />
+          <span>{{ match.homeTeam?.name }}</span>
+        </div>
       </td>
-      <td>3 - 1</td>
+      <td>{{ match.homeScore }} - {{ match.awayScore }}</td>
       <td>
-        <img src="https://via.placeholder.com/40" alt="Team Beta Logo" />
-        Team Beta
+        <div class="team-info">
+          <img
+            [src]="match.awayTeam?.logoPath || 'https://via.placeholder.com/50'"
+            alt="{{ match.awayTeam?.name }}"
+          />
+          <span>{{ match.awayTeam?.name }}</span>
+        </div>
       </td>
-      <td>Stadium A</td>
-    </tr>
-    <tr>
-      <td>2024-12-26</td>
-      <td>
-        <img src="https://via.placeholder.com/40" alt="Team Gamma Logo" />
-        Team Gamma
-      </td>
-      <td>2 - 2</td>
-      <td>
-        <img src="https://via.placeholder.com/40" alt="Team Delta Logo" />
-        Team Delta
-      </td>
-      <td>Stadium B</td>
-    </tr>
-    <tr>
-      <td>2024-12-27</td>
-      <td>
-        <img src="https://via.placeholder.com/40" alt="Team Epsilon Logo" />
-        Team Epsilon
-      </td>
-      <td>1 - 0</td>
-      <td>
-        <img src="https://via.placeholder.com/40" alt="Team Zeta Logo" />
-        Team Zeta
-      </td>
-      <td>Stadium C</td>
+      <td>{{ match.location }}</td>
     </tr>
     </tbody>
   </table>
