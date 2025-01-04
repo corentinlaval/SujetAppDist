@@ -3,26 +3,25 @@
   max-width: 700px;
   margin: 20px auto;
   padding: 20px;
-  border: 2px solid #ff5722;
+  border: 2px solid #d32f2f;
   border-radius: 12px;
-  background: linear-gradient(145deg, #ffe9e9, #ffc8c8);
+  background: linear-gradient(145deg, #ffebee, #ffcdd2);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   font-family: Arial, sans-serif;
 }
 
 h2 {
   text-align: center;
-  color: #ff5722;
+  color: #d32f2f;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .form-layout {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -76,17 +75,16 @@ h2 {
 
 input {
   width: 100%;
-  padding: 10px;
-  border: 2px solid #ff5722;
+  padding: 12px;
+  border: 2px solid #d32f2f;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 16px;
   background-color: #f9f9f9;
-  box-sizing: border-box;
 }
 
 button {
-  padding: 10px;
-  background-color: #ff5722;
+  padding: 12px;
+  background-color: #d32f2f;
   color: white;
   border: none;
   border-radius: 8px;
@@ -95,23 +93,23 @@ button {
   text-transform: uppercase;
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: block;
 }
 
 button:hover {
-  background-color: #e64a19;
+  background-color: #b71c1c;
 }
 
 button:disabled {
-  background-color: #bfbfbf;
+  background-color: #ef9a9a;
   cursor: not-allowed;
 }
 
 .search-bar input {
   width: 100%;
-  padding: 10px;
-  border: 2px solid #ff5722;
+  padding: 12px;
+  border: 2px solid #d32f2f;
   border-radius: 8px;
   font-size: 14px;
 }
@@ -123,8 +121,6 @@ button:disabled {
 }
 
 .search-results li {
-  display: flex;
-  align-items: center;
   padding: 12px;
   border: 2px solid #d32f2f;
   border-radius: 8px;
@@ -135,6 +131,10 @@ button:disabled {
 
 .search-results li:hover {
   background-color: #ffcdd2;
+}
+
+p {
+  width: 100%
 }
 
 .match-info {

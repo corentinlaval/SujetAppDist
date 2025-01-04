@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchesService } from '../matches.service';
 import {FormsModule} from '@angular/forms';
-import {NgForOf, NgIf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf, UpperCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-delete-match',
@@ -10,7 +10,9 @@ import {NgForOf, NgIf} from '@angular/common';
   imports: [
     FormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    UpperCasePipe,
+    DatePipe
   ]
 })
 export class DeletematchesComponent implements OnInit {
@@ -42,6 +44,22 @@ export class DeletematchesComponent implements OnInit {
 
   selectMatch(match: any): void {
     this.selectedMatch = match;
+  }
+
+  formatTimeTo24Hour(time: string | null): Date | null {
+    if (!time) return null; // Vérifie si time est null ou undefined
+
+    const [timePart, modifier] = time.split(' ');
+    let [hours, minutes] = timePart.split(':').map(Number);
+
+    if (modifier === 'PM' && hours < 12) {
+      hours += 12;
+    }
+    if (modifier === 'AM' && hours === 12) {
+      hours = 0;
+    }
+
+    return new Date(1970, 0, 1, hours, minutes);
   }
 
   onDeleteMatch(): void {
