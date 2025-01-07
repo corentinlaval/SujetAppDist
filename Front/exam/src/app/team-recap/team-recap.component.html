@@ -38,7 +38,7 @@
     <a routerLink="/matches" routerLinkActive="active"><h3>Upcoming Matches</h3></a>
     <ul class="match-list">
       <li *ngFor="let match of upcomingMatches" class="match-item">
-        <p>{{ match.team1 }} vs {{ match.team2 }}</p>
+        <p>{{match.homeTeam?.name }} vs {{ match.awayTeam?.name }}</p>
         <small>{{ match.date }}</small>
       </li>
     </ul>
