@@ -1,15 +1,6 @@
 <div class="match-list-container">
   <h1>Match Schedule</h1>
 
-  <!-- Options de filtre -->
-  <div class="filter-options">
-    <label for="sort-matches">Sort by:</label>
-    <select id="sort-matches" [(ngModel)]="sortOption" (change)="onSortChange()">
-      <option value="date">Date</option>
-      <option value="team">Team</option>
-    </select>
-  </div>
-
   <!-- Table des matchs -->
   <table class="match-table">
     <thead>

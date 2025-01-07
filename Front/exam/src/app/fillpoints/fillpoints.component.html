@@ -34,12 +34,57 @@
   <form class="form-fields" *ngIf="selectedMatch">
     <div class="form-group">
       <label>{{ selectedMatch.homeTeam?.name | uppercase }} Points</label>
-      <input type="number" id="homeScore" [(ngModel)]="selectedMatch.homeScore" name="homeScore" min="0" placeholder="Enter Home Team Points" />
+      <input
+        type="number"
+        id="homeScore"
+        [(ngModel)]="selectedMatch.homeScore"
+        name="homeScore"
+        (change)="onScoreChange('home')"
+        placeholder="Enter Home Team Points"
+        min="0"
+      />
     </div>
+
+    <!-- Sélecteurs dynamiques pour les buteurs de l'équipe à domicile -->
+    <div *ngFor="let scorer of homeScorers; let i = index">
+      <label>Scorer {{ i + 1 }}:</label>
+      <select
+        [(ngModel)]="scorer.playerId"
+        name="homeScorer{{i}}"
+      [ngModelOptions]="{ standalone: true }"
+      >
+      <option *ngFor="let player of selectedMatch.homeTeam?.players" [value]="player.id">
+        {{ player.name }}
+      </option>
+      </select>
+    </div>
+
 
     <div class="form-group">
       <label>{{ selectedMatch.awayTeam?.name | uppercase }} Points</label>
-      <input type="number" id="awayScore" [(ngModel)]="selectedMatch.awayScore" name="awayScore" min="0" placeholder="Enter Away Team Points" />
+      <input
+        type="number"
+        id="awayScore"
+        [(ngModel)]="selectedMatch.awayScore"
+        name="awayScore"
+        (change)="onScoreChange('away')"
+        placeholder="Enter Away Team Points"
+        min="0"
+      />
+    </div>
+
+    <!-- Sélecteurs dynamiques pour les buteurs de l'équipe à l'extérieur -->
+    <div *ngFor="let scorer of awayScorers; let i = index">
+      <label>Scorer {{ i + 1 }}:</label>
+      <select
+        [(ngModel)]="scorer.playerId"
+        name="awayScorer{{i}}"
+      [ngModelOptions]="{ standalone: true }"
+      >
+      <option *ngFor="let player of selectedMatch.awayTeam?.players" [value]="player.id">
+        {{ player.name }}
+      </option>
+      </select>
     </div>
 
     <button

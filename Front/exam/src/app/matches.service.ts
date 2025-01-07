@@ -25,4 +25,19 @@ export class MatchesService {
   deleteMatch(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
+
+  // Ajouter un point
+  addPoint(matchId: number, playerId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${matchId}/add-point`, { playerId });
+  }
+
+// Enlever un point
+  removePoint(matchId: number, playerId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${matchId}/remove-point`, { playerId });
+  }
+
+  updateScoresAndScorers(scoringData: any): Observable<any> {
+    return this.http.post<any>('http://localhost:8080/api/matches/update-scores-and-scorers', scoringData);
+  }
+
 }
