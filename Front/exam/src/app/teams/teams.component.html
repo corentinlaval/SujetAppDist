@@ -4,7 +4,6 @@
   <table class="team-table">
     <thead>
     <tr>
-      <th>Rank</th>
       <th>Logo</th>
       <th>Name</th>
       <th>City</th>
@@ -15,7 +14,6 @@
     </thead>
     <tbody>
     <tr *ngFor="let team of teams; let i = index">
-      <td>{{ i + 1 }}</td>
       <td>
         <img [src]="team.logo || 'https://via.placeholder.com/50'" alt="{{ team.name }}" />
       </td>

@@ -5,7 +5,6 @@
   <table class="match-table">
     <thead>
     <tr>
-      <th>#</th>
       <th>Date</th>
       <th>Home Team</th>
       <th>Score</th>
@@ -15,7 +14,6 @@
     </thead>
     <tbody>
     <tr *ngFor="let match of sortedMatches; let i = index">
-      <td>{{ i + 1 }}</td>
       <td>{{ match.matchDate | date: 'dd/MM/yyyy' }}</td>
       <td>
         <div class="team-info">
