@@ -47,20 +47,31 @@ export class UpdatematchesComponent implements OnInit {
   }
 
   onUpdateMatch(): void {
-    if (this.selectedMatch) {
-      this.matchesService.updateMatch(this.selectedMatch).subscribe(
-        () => {
-          alert('Match updated successfully!');
-          this.loadMatches();
-          this.selectedMatch = null;
-        },
-        (error) => {
-          alert('Failed to update match. Please try again.');
-          console.error('Error:', error);
-        }
-      );
+    if (!this.selectedMatch || !this.selectedMatch.id) {
+      alert('Please select a match to update.');
+      return;
     }
+
+    this.matchesService.updateMatch(this.selectedMatch).subscribe({
+      next: (response) => {
+        console.log('Response:', response);
+        alert('Match updated successfully!');
+        this.selectedMatch = null;
+        this.loadMatches(); // Recharge la liste des matchs
+      },
+      error: (error) => {
+        if (error.status && error.status !== 200) {
+          console.error('Error updating match:', error);
+          alert('Failed to update match. Please try again.');
+        } else {
+          alert('Match updated successfully!');
+          this.selectedMatch = null;
+          this.loadMatches(); // Recharge la liste des matchs
+        }
+      },
+    });
   }
+
 
   formatTimeTo24Hour(time: string | null): Date | null {
     if (!time) return null; // Vérifie si time est null ou undefined
@@ -76,5 +87,32 @@ export class UpdatematchesComponent implements OnInit {
     }
 
     return new Date(1970, 0, 1, hours, minutes);
+  }
+
+  formatTimeForInput(matchTime: string | null): string | null {
+    if (!matchTime) return null;
+
+    const [timePart, modifier] = matchTime.split(' ');
+    let [hours, minutes] = timePart.split(':').map(Number);
+
+    if (modifier === 'PM' && hours < 12) {
+      hours += 12;
+    }
+    if (modifier === 'AM' && hours === 12) {
+      hours = 0;
+    }
+
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
+
+  formatDateForInput(matchDate: string | Date | null): string | null {
+    if (!matchDate) return null;
+
+    const date = new Date(matchDate);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Ajoute un zéro devant les mois < 10
+    const day = date.getDate().toString().padStart(2, '0'); // Ajoute un zéro devant les jours < 10
+
+    return `${year}-${month}-${day}`;
   }
 }

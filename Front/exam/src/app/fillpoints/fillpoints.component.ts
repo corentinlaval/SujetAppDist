@@ -56,24 +56,32 @@ export class FillpointsComponent implements OnInit {
   // Update the match points
   onFillPoints(): void {
     if (this.selectedMatch) {
+      // Préparer l'objet de match mis à jour
       const updatedMatch = {
+        id: this.selectedMatch.id,
+        homeTeam: this.selectedMatch.homeTeam,
+        awayTeam: this.selectedMatch.awayTeam,
+        location: this.selectedMatch.location,
+        matchDate: this.selectedMatch.matchDate,
+        matchTime: this.selectedMatch.matchTime,
         homeScore: this.selectedMatch.homeScore,
         awayScore: this.selectedMatch.awayScore,
       };
 
+      // Envoyer la requête PUT avec l'objet complet du match
       this.http
-        .put(`http://localhost:8080/api/matches/${this.selectedMatch.id}`, updatedMatch)
-        .subscribe(
-          () => {
-            alert('Points updated successfully!');
-            this.loadMatches(); // Reload matches after updating
-            this.selectedMatch = null; // Deselect the match after updating
-          },
-          (error) => {
-            console.error('Error updating points:', error);
-            alert('Failed to update points. Please try again.');
-          }
-        );
+          .put(`http://localhost:8080/api/matches/${this.selectedMatch.id}`, updatedMatch)
+          .subscribe(
+              () => {
+                alert('Points updated successfully!');
+                this.loadMatches(); // Recharger les matchs après la mise à jour
+                this.selectedMatch = null; // Désélectionner le match après la mise à jour
+              },
+              (error) => {
+                console.error('Error updating points:', error);
+                alert('Failed to update points. Please try again.');
+              }
+          );
     }
   }
 

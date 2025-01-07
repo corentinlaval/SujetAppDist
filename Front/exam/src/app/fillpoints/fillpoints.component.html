@@ -8,7 +8,7 @@
       <div class="logo-preview">
         <img *ngIf="selectedMatch.team1Logo" [src]="selectedMatch.team1Logo" alt="Team 1 Logo" />
       </div>
-      <label>Team 1: {{ selectedMatch.team1Name | uppercase }}</label>
+      <label>{{ selectedMatch.homeTeam?.name | uppercase }}</label>
     </div>
 
     <!-- VS Box -->
@@ -19,27 +19,27 @@
       <div class="logo-preview">
         <img *ngIf="selectedMatch.team2Logo" [src]="selectedMatch.team2Logo" alt="Team 2 Logo" />
       </div>
-      <label>Team 2: {{ selectedMatch.team2Name | uppercase }}</label>
+      <label>{{ selectedMatch.awayTeam?.name | uppercase }}</label>
     </div>
   </div>
 
   <!-- Détails du match -->
   <div class="match-date-time" *ngIf="selectedMatch">
     <p><strong>Date:</strong> {{ selectedMatch.matchDate | date: 'dd/MM/yyyy' }}</p>
-    <p *ngIf="selectedMatch.matchTime"><strong>Time:</strong> {{ formatTimeTo24Hour(selectedMatch.matchTime) }}</p>
+    <p *ngIf="selectedMatch.matchTime"><strong>Time:</strong> {{ formatTimeTo24Hour(selectedMatch.matchTime) | date: 'hh:mm a' }}</p>
     <p *ngIf="!selectedMatch.matchTime"><strong>Time:</strong> N/A</p>
   </div>
 
   <!-- Formulaire pour remplir les points -->
   <form class="form-fields" *ngIf="selectedMatch">
     <div class="form-group">
-      <label for="homeScore">Home Team Points</label>
-      <input type="number" id="homeScore" [(ngModel)]="selectedMatch.homeScore" min="0" placeholder="Enter Home Team Points" />
+      <label>{{ selectedMatch.homeTeam?.name | uppercase }} Points</label>
+      <input type="number" id="homeScore" [(ngModel)]="selectedMatch.homeScore" name="homeScore" min="0" placeholder="Enter Home Team Points" />
     </div>
 
     <div class="form-group">
-      <label for="awayScore">Away Team Points</label>
-      <input type="number" id="awayScore" [(ngModel)]="selectedMatch.awayScore" min="0" placeholder="Enter Away Team Points" />
+      <label>{{ selectedMatch.awayTeam?.name | uppercase }} Points</label>
+      <input type="number" id="awayScore" [(ngModel)]="selectedMatch.awayScore" name="awayScore" min="0" placeholder="Enter Away Team Points" />
     </div>
 
     <button

@@ -66,7 +66,7 @@ h2 {
 }
 
 .match-date-time p {
-  margin: 0;
+  margin-bottom: 10px;
 }
 
 .form-fields {
@@ -140,8 +140,9 @@ button:disabled {
 .search-results li:hover {
   background-color: #bbdefb;
 }
+
 p {
-  width: 100%
+  width: 100%;
 }
 
 .match-info {

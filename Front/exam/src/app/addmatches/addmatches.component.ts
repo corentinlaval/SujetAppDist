@@ -79,12 +79,15 @@ export class AddmatchesComponent implements OnInit {
   onAddMatch(): void {
     console.log('Attempting to add match...', this.match);
     if (this.isFormValid()) {
+      // Le format correct attendu par le backend
       const matchToSave = {
-        homeTeamId: this.match.team1,
-        awayTeamId: this.match.team2,
+        homeTeam: { id: this.match.team1 },
+        awayTeam: { id: this.match.team2 },
         location: this.match.location,
         matchDate: this.match.date,
         matchTime: this.match.time,
+        homeScore: 0,
+        awayScore: 0,
       };
 
       const team1Name = this.getTeamNameById(this.match.team1);
