@@ -1,35 +1,50 @@
-import { Component } from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { MatchesService } from '../matches.service';
 import {RouterLink, RouterLinkActive} from '@angular/router';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-team-recap',
+  templateUrl: './team-recap.component.html',
   imports: [
+    RouterLink,
     NgForOf,
     NgIf,
-    RouterLink,
     RouterLinkActive
   ],
-  templateUrl: './team-recap.component.html',
-  styleUrl: './team-recap.component.css'
+  styleUrls: ['./team-recap.component.css']
 })
-export class TeamRecapComponent {
-  topTeams = [
-    { name: 'Team Alpha', city: 'Paris', logo: 'https://via.placeholder.com/50' },
-    { name: 'Team Beta', city: 'Lyon', logo: 'https://via.placeholder.com/50' },
-    { name: 'Team Gamma', city: 'Marseille', logo: 'https://via.placeholder.com/50' },
-  ];
+export class TeamRecapComponent implements OnInit {
+  topTeams: any[] = [];
+  topPlayers: any[] = [];
+  upcomingMatches: any[] = [];
 
-  topPlayers = [
-    { name: 'John Doe', position: 'Forward', photo: 'https://via.placeholder.com/50' },
-    { name: 'Jane Smith', position: 'Goalkeeper', photo: 'https://via.placeholder.com/50' },
-    { name: 'Jack Black', position: 'Defender', photo: 'https://via.placeholder.com/50' },
-  ];
+  constructor(private matchesService: MatchesService) {}
 
-  upcomingMatches = [
-    { team1: 'Team Alpha', team2: 'Team Beta', date: '2024-12-20' },
-    { team1: 'Team Gamma', team2: 'Team Delta', date: '2024-12-21' },
-    { team1: 'Team Epsilon', team2: 'Team Zeta', date: '2024-12-22' },
-  ];
+  ngOnInit(): void {
+    this.loadTopTeams();
+    this.loadTopPlayers();
+    this.loadUpcomingMatches();
+  }
 
+  // Charger le classement des meilleures équipes
+  loadTopTeams(): void {
+    this.matchesService.getTopTeams().subscribe((data) => {
+      this.topTeams = data;
+    });
+  }
+
+  // Charger les meilleurs joueurs
+  loadTopPlayers(): void {
+    this.matchesService.getTopPlayers().subscribe((data) => {
+      this.topPlayers = data;
+    });
+  }
+
+  // Charger les prochains matchs
+  loadUpcomingMatches(): void {
+    this.matchesService.getUpcomingMatches().subscribe((data) => {
+      this.upcomingMatches = data;
+    });
+  }
 }

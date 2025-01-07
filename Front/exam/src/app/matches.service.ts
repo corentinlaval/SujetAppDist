@@ -40,4 +40,19 @@ export class MatchesService {
     return this.http.post<any>('http://localhost:8080/api/matches/update-scores-and-scorers', scoringData);
   }
 
+  // Récupérer les meilleures équipes
+  getTopTeams(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/teams/top`);
+  }
+
+  // Récupérer les meilleurs joueurs
+  getTopPlayers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/players/top`);
+  }
+
+  // Récupérer les prochains matchs
+  getUpcomingMatches(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/upcoming`);
+  }
+
 }
