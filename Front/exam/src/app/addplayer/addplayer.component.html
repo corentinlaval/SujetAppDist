@@ -1,5 +1,6 @@
 <div class="add-player-container">
   <h2>Add a New Player</h2>
+
   <div class="form-layout">
     <!-- Section pour la photo -->
     <div class="photo-section">
@@ -42,19 +43,27 @@
         />
       </div>
 
+      <!-- Liste déroulante pour les équipes -->
       <div class="form-group">
         <label for="team">Team (Optional)</label>
-        <input
-          type="text"
+        <select
           id="team"
           name="team"
           class="form-control"
           [(ngModel)]="player.teamId"
-          placeholder="Leave empty if no team"
-        />
+        >
+          <option [value]="null" disabled selected>Select a team</option>
+          <option *ngFor="let team of teams" [value]="team.id">
+            {{ team.name }}
+          </option>
+        </select>
       </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="!playerForm.form.valid">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!playerForm.form.valid"
+      >
         Add Player
       </button>
     </form>

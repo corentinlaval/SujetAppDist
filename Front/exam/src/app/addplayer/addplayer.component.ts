@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-addplayer',
@@ -9,7 +9,8 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./addplayer.component.css'],
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    NgForOf
   ]
 })
 export class AddplayerComponent implements OnInit {

@@ -1,1 +1,95 @@
-<p>updatematches works!</p>
+<div class="update-match-container">
+  <h2>Update Match</h2>
+
+  <!-- Form to update match details -->
+  <div *ngIf="selectedMatch" class="form-layout">
+    <div class="photo-section">
+      <div class="photo-preview">
+        <img
+          *ngIf="selectedMatch.team1Logo"
+          [src]="selectedMatch.team1Logo"
+          alt="Home Team Logo"
+        />
+      </div>
+      <label>{{ selectedMatch.homeTeam?.name | uppercase }}</label>
+    </div>
+
+    <div class="vs-box">VS</div>
+
+    <div class="photo-section">
+      <div class="photo-preview">
+        <img
+          *ngIf="selectedMatch.team2Logo"
+          [src]="selectedMatch.team2Logo"
+          alt="Away Team Logo"
+        />
+      </div>
+      <label>{{ selectedMatch.awayTeam?.name | uppercase }}</label>
+    </div>
+  </div>
+
+  <!-- Update Form Fields -->
+  <form class="form-fields" *ngIf="selectedMatch">
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input
+        type="text"
+        id="location"
+        [(ngModel)]="selectedMatch.location"
+        placeholder="Enter new location"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="matchDate">Date</label>
+      <input
+        type="date"
+        id="matchDate"
+        [(ngModel)]="selectedMatch.matchDate"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="matchTime">Time</label>
+      <input
+        type="time"
+        id="matchTime"
+        [(ngModel)]="selectedMatch.matchTime"
+      />
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!selectedMatch"
+      (click)="onUpdateMatch()"
+    >
+      Update Match
+    </button>
+  </form>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search for a match"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <!-- Search Results -->
+  <ul class="search-results">
+    <li *ngFor="let match of filteredMatches" (click)="selectMatch(match)">
+      <div class="match-info">
+        <p><strong>Teams:</strong> {{ match.homeTeam?.name | uppercase }} <strong>VS</strong> {{ match.awayTeam?.name | uppercase }}</p>
+        <p><strong>Location:</strong> {{ match.location }}</p>
+      </div>
+      <div class="match-info">
+        <p><strong>Date:</strong> {{ match.matchDate | date: 'dd/MM/yyyy' }}</p>
+        <p *ngIf="match.matchTime"><strong>Time:</strong> {{ formatTimeTo24Hour(match.matchTime) | date: 'hh:mm a' }}</p>
+        <p *ngIf="!match.matchTime"><strong>Time:</strong> N/A</p>
+      </div>
+    </li>
+  </ul>
+</div>

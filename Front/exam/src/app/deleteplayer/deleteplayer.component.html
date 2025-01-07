@@ -46,9 +46,9 @@
           type="text"
           id="team"
           name="team"
-        class="form-control"
-        [(ngModel)]="selectedPlayer.team"
-        readonly
+          class="form-control"
+          [value]="selectedPlayer.team?.name || 'No team'"
+          readonly
         />
       </div>
 
@@ -81,7 +81,7 @@
         <div>
           <p><strong>Name:</strong> {{ player.name }}</p>
           <p><strong>Position:</strong> {{ player.position }}</p>
-          <p><strong>Team:</strong> {{ player.team || 'No team' }}</p>
+          <p><strong>Team:</strong> {{ player.team?.name || 'No team' }}</p>
         </div>
       </div>
     </li>

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {CarouselComponent} from '../carousel/carousel.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-welcome', // Correspond au fichier et au sélecteur
   templateUrl: './home.component.html',
   imports: [
-    CarouselComponent
+    CarouselComponent,
+    RouterLink
   ],
   styleUrls: ['./home.component.css']
 })

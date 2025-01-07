@@ -33,44 +33,55 @@ export class AddmatchesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.teamsService.getTeams().subscribe((data) => {
-      this.teams = data;
-      this.filteredTeamsForTeam2 = data;
+    console.log('Fetching teams...');
+    this.teamsService.getTeams().subscribe({
+      next: (data) => {
+        this.teams = data;
+        this.filteredTeamsForTeam2 = data;
+        console.log('Teams loaded:', this.teams);
+      },
+      error: (error) => {
+        console.error('Error fetching teams:', error);
+      },
     });
   }
 
   onTeamSelect(teamId: string, team: 'team1' | 'team2'): void {
+    console.log(`Team selected: ${teamId} for ${team}`);
     if (team === 'team1') {
       this.match.team1 = teamId;
       this.filteredTeamsForTeam2 = this.teams.filter((t) => t.id != teamId);
+      console.log('Filtered teams for team2:', this.filteredTeamsForTeam2);
     } else if (team === 'team2') {
       this.match.team2 = teamId;
     }
   }
 
   private getTeamNameById(teamId: string | number): string {
-    const team = this.teams.find((t) => t.id == teamId); // Utilisation de "==" pour éviter les problèmes de type
+    const team = this.teams.find((t) => t.id == teamId);
+    console.log(`Fetching team name for ID: ${teamId}`, team);
     return team ? team.name : 'Unknown Team';
   }
 
   isFormValid(): boolean {
-    return (
+    console.log('Validating form...');
+    const isValid =
       !!this.match.team1 &&
       !!this.match.team2 &&
       this.match.team1 !== this.match.team2 &&
       !!this.match.location &&
       !!this.match.date &&
-      !!this.match.time
-    );
+      !!this.match.time;
+    console.log('Form is valid:', isValid);
+    return isValid;
   }
 
   onAddMatch(): void {
+    console.log('Attempting to add match...', this.match);
     if (this.isFormValid()) {
       const matchToSave = {
-        team1Id: this.match.team1,
-        team2Id: this.match.team2,
-        team1Logo: this.match.team1Logo,
-        team2Logo: this.match.team2Logo,
+        homeTeamId: this.match.team1,
+        awayTeamId: this.match.team2,
         location: this.match.location,
         matchDate: this.match.date,
         matchTime: this.match.time,
@@ -79,24 +90,29 @@ export class AddmatchesComponent implements OnInit {
       const team1Name = this.getTeamNameById(this.match.team1);
       const team2Name = this.getTeamNameById(this.match.team2);
 
-      if (team1Name !== 'Unknown Team' && team2Name !== 'Unknown Team') {
-        this.http.post('http://localhost:8080/api/matches', matchToSave).subscribe(
-          (response) => {
+      console.log('Match to save:', matchToSave);
+      if (team1Name && team2Name) {
+        this.http.post('http://localhost:8080/api/matches', matchToSave).subscribe({
+          next: (response) => {
+            console.log('Match added successfully:', response);
             alert(`Match between ${team1Name} and ${team2Name} added successfully!`);
             this.resetForm();
           },
-          (error) => {
+          error: (error) => {
             console.error('Error adding match:', error);
-            this.feedbackMessage = 'Error adding match. Please try again.';
-          }
-        );
+            alert(`Failed to add match. Error: ${error.message}`);
+          },
+        });
       } else {
         alert('Failed to identify teams. Please try again.');
       }
+    } else {
+      alert('Please complete all fields before adding the match.');
     }
   }
 
   private resetForm(): void {
+    console.log('Resetting form...');
     this.match = {
       team1: '',
       team2: '',
