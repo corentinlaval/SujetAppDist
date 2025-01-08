@@ -10,7 +10,7 @@ public class Player {
     private Long id;
 
     private String name;
-    private int points;
+    private int points = 0;
     private String position;
 
     @Column(name = "profile_picture_path")
@@ -20,6 +20,14 @@ public class Player {
     @JoinColumn(name = "team_id")
     private Team team;
 
+
+    public int getGoals() {
+        return points;
+    }
+
+    public void setGoals(int goals) {
+        this.points = goals;
+    }
     // Getters et setters
     public Long getId() {
         return id;

@@ -3,6 +3,7 @@ package com.poc.exam.controller;
 import com.poc.exam.DTO.PlayerRequest;
 import com.poc.exam.model.Player;
 import com.poc.exam.model.Team;
+import com.poc.exam.repository.TeamRepository;
 import com.poc.exam.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/players")
 public class PlayerController {
+
     @Autowired
     private PlayerService playerService;
+
+    @Autowired
+    private TeamRepository teamRepository;
 
     @GetMapping
     public List<Player> getAllPlayers() {
@@ -27,23 +32,47 @@ public class PlayerController {
         player.setName(playerRequest.getName());
         player.setPosition(playerRequest.getPosition());
 
-        // Décoder l'image encodée en base64 si elle est présente
         if (playerRequest.getProfilePictureBase64() != null) {
             String filePath = saveImage(playerRequest.getProfilePictureBase64());
             player.setProfilePicturePath(filePath);
         }
 
-        // Associer une équipe si nécessaire
-        if (playerRequest.getTeamId() != 0) {
-            Team team = new Team();
-            team.setId(playerRequest.getTeamId());
+        if (playerRequest.getTeamId() != null) {
+            Team team = teamRepository.findById(playerRequest.getTeamId())
+                    .orElseThrow(() -> new RuntimeException("Team not found"));
             player.setTeam(team);
         }
 
         return playerService.addPlayer(player);
     }
 
-    // Méthode utilitaire pour sauvegarder l'image sur le disque
+    @PutMapping("/{id}")
+    public Player updatePlayer(@PathVariable Long id, @RequestBody PlayerRequest playerRequest) {
+        Player existingPlayer = playerService.getPlayerById(id)
+                .orElseThrow(() -> new RuntimeException("Player not found"));
+
+        existingPlayer.setName(playerRequest.getName());
+        existingPlayer.setPosition(playerRequest.getPosition());
+
+        if (playerRequest.getProfilePictureBase64() != null) {
+            String filePath = saveImage(playerRequest.getProfilePictureBase64());
+            existingPlayer.setProfilePicturePath(filePath);
+        }
+
+        if (playerRequest.getTeamId() != null) {
+            Team team = teamRepository.findById(playerRequest.getTeamId())
+                    .orElseThrow(() -> new RuntimeException("Team not found"));
+            existingPlayer.setTeam(team);
+        }
+
+        return playerService.updatePlayer(existingPlayer);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePlayer(@PathVariable Long id) {
+        playerService.deletePlayer(id);
+    }
+
     private String saveImage(String base64Image) {
         try {
             byte[] decodedBytes = java.util.Base64.getDecoder().decode(base64Image);
@@ -57,8 +86,8 @@ public class PlayerController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public void deletePlayer(@PathVariable Long id) {
-        playerService.deletePlayer(id);
+    @GetMapping("/top")
+    public List<Player> getTopPlayers() {
+        return playerService.getTopPlayers();
     }
 }

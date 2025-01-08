@@ -12,8 +12,8 @@ public class Team {
     private String name;
     private String city;
     private String stadium;
-    private Integer losses;
-    private Integer wins;
+    private Integer losses = 0;
+    private Integer wins = 0;
 
     @Column(name = "logo_path")
     private String logoPath; // Pour stocker l'emplacement ou l'URL du logo
