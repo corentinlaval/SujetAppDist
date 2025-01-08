@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UpdatePlayerComponent } from './updateplayer.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('UpdateplayerComponent', () => {
   let component: UpdatePlayerComponent;
@@ -8,7 +9,7 @@ describe('UpdateplayerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UpdatePlayerComponent]
+      imports: [UpdatePlayerComponent, HttpClientTestingModule]
     })
     .compileComponents();
 

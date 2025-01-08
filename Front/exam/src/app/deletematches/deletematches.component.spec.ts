@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeletematchesComponent } from './deletematches.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('DeletematchesComponent', () => {
   let component: DeletematchesComponent;
@@ -8,7 +9,7 @@ describe('DeletematchesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeletematchesComponent]
+      imports: [DeletematchesComponent, HttpClientTestingModule]
     })
     .compileComponents();
 

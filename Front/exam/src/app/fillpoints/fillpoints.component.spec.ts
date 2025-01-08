@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FillpointsComponent } from './fillpoints.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('FillpointsComponent', () => {
   let component: FillpointsComponent;
@@ -8,7 +9,7 @@ describe('FillpointsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FillpointsComponent]
+      imports: [FillpointsComponent, HttpClientTestingModule]
     })
     .compileComponents();
 
