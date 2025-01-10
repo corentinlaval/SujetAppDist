@@ -141,3 +141,61 @@ mvn test
 ├── tsconfig.json
 └── ...
 ```
+
+## 🚀 Étape 1 : Pré-requis
+
+Avant de démarrer, assurez-vous d’avoir les outils suivants installés :
+
+- **Node.js** (version 16+ recommandée)
+- **Angular CLI**
+
+### 🔍 Vérifiez les versions installées avec les commandes suivantes :
+
+```bash
+node -v
+ng version
+```
+
+Si les versions ne correspondent pas aux pré-requis, vous pouvez télécharger et installer les dernières versions depuis les liens suivants :
+
+•	[Télécharger Node.js](https://nodejs.org/)
+
+•	[Documentation Angular CLI](https://angular.io/cli)
+
+## 📦 Étape 2 : Installation des dépendances
+
+Rendez-vous dans le dossier `/Front/exam` et exécutez la commande suivante pour installer les dépendances du projet :
+
+```bash
+cd Front/exam
+npm install
+```
+Cette commande permettra de télécharger et d’installer automatiquement toutes les bibliothèques nécessaires au bon fonctionnement du projet, en se basant sur le fichier package.json.
+
+## ▶️ Étape 3 : Lancer l’application Angular en mode développement
+
+Pour démarrer l'application Angular en mode développement, rendez-vous dans le dossier `/Front` et exécutez la commande suivante :
+
+```bash
+ng serve
+```
+
+L’application sera disponible à l’adresse suivante par défaut :
+[http://localhost:4200/](http://localhost:4200/)
+
+➡️ Note : Si le port 4200 est déjà utilisé, Angular attribuera automatiquement un autre port. Cette information sera affichée dans la console.
+
+Si vous souhaitez utiliser un port différent :
+
+```bash
+ng serve --port 4300
+```
+
+## 🧪 Étape 5 : Lancer les tests unitaires
+
+Pour exécuter les tests unitaires de l'application Angular, utilisez la commande suivante dans le dossier `/Front/exam` :
+
+```bash
+ng test
+```
+
