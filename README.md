@@ -22,7 +22,16 @@ Ce projet a été conçu avec passion pour répondre aux besoins des amateurs de
 > **Note** : Ce projet a été développé dans le cadre d'une formation en ingénierie avec une approche full-stack moderne, axée sur la gestion des données sportives.
 
 ---
-#  Backend (Spring Boot + MongoDB)
+
+# 📚 Table des matières
+
+1. [Backend](#Backend)
+2. [Frontend](#Frontend)
+3. [Description de l'application](#Description de l'application)
+
+---
+
+# Backend (Spring Boot + MongoDB)
 
 Bienvenue dans le backend du projet **Sports Manager** !  
 Ce backend est développé avec **Spring Boot** et utilise **MongoDB** comme base de données NoSQL.
@@ -124,7 +133,7 @@ mvn test
 
 ---
 
-#  Guide de démarrage du Frontend
+#  Frontend (Angular)
 
 ## 📁 Structure du projet
 
@@ -199,7 +208,7 @@ Pour exécuter les tests unitaires de l'application Angular, utilisez la command
 ng test
 ```
 
-# 📝 Description de l'application
+# Description de l'application
 
 ## 🎯 Objectif du projet
 
