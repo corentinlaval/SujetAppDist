@@ -1,0 +1,144 @@
+.add-match-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #4caf50;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #e9ffe9, #c8ffc8);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #388e3c;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+
+.teams-vs-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.team-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+}
+
+.logo-preview {
+  width: 140px;
+  height: 140px;
+  border: 2px dashed #388e3c;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border: 2px solid #388e3c;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+select:hover {
+  background-color: #e8f5e9;
+}
+
+input[type="file"] {
+  margin-top: 10px;
+}
+
+.vs-box {
+  background-color: #4caf50;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  width: 50%;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #388e3c;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+button {
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto 0;
+  display: block;
+}
+
+button:hover {
+  background-color: #388e3c;
+}
+
+label {
+  font-size: 16px;
+  color: #4caf50;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+button:disabled {
+  background-color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+.error-msg {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}

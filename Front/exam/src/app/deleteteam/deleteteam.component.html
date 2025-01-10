@@ -1,0 +1,89 @@
+<div class="delete-team-container">
+  <h2>Delete a Team</h2>
+
+  <!-- Afficher les informations de l'équipe sélectionnée -->
+  <div *ngIf="selectedTeam" class="form-layout">
+    <!-- Section pour le logo -->
+    <div class="logo-section">
+      <div class="logo-preview">
+        <img
+          *ngIf="selectedTeam.logo"
+          [src]="selectedTeam.logo"
+          alt="Team logo"
+        />
+      </div>
+      <label class="upload-label">Team Logo</label>
+    </div>
+
+    <!-- Formulaire -->
+    <form class="form-fields">
+      <div class="form-group">
+        <label for="name">Team Name</label>
+        <input
+          type="text"
+          id="name"
+          name="teamName"
+          class="form-control"
+          [(ngModel)]="selectedTeam.name"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          id="city"
+          name="teamCity"
+          class="form-control"
+          [(ngModel)]="selectedTeam.city"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="stadium">Stadium</label>
+        <input
+          type="text"
+          id="stadium"
+          name="teamStadium"
+          class="form-control"
+          [(ngModel)]="selectedTeam.stadium"
+          readonly
+        />
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-danger"
+        [disabled]="!selectedTeam"
+        (click)="onDeleteTeam()"
+      >
+        Delete Team
+      </button>
+    </form>
+  </div>
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search for a team"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <!-- Résultats de recherche -->
+  <ul class="search-results">
+    <li *ngFor="let team of filteredTeams" (click)="selectTeam(team)">
+      <div class="team-info">
+        <img *ngIf="team.logo" [src]="team.logo" alt="{{ team.name }}" />
+        <div>
+          <p><strong>Name:</strong> {{ team.name }}</p>
+          <p><strong>City:</strong> {{ team.city }}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

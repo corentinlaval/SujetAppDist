@@ -1,0 +1,27 @@
+<div class="player-list-container">
+  <h1>Player Rankings</h1>
+  <table class="player-table">
+    <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Team</th>
+      <th>Points</th>
+      <th>Matches</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of players; let i = index">
+      <td>
+        <img ngSrc="player.profilePicturePath || 'https://via.placeholder.com/50'" alt="{{ player.name }}" fill/>
+      </td>
+      <td>{{ player.name }}</td>
+      <td>{{ player.position }}</td>
+      <td>{{ player.team?.name || 'Unknown Team' }}</td>
+      <td>{{ player.points }}</td>
+      <td>{{ player.matches || 'N/A' }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

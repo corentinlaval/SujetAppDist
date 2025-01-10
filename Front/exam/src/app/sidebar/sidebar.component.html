@@ -1,0 +1,69 @@
+<div [class.collapsed]="isCollapsed" class="sidebar-container">
+  <button class="toggle-btn" (click)="toggleSidebar()">
+    {{ isCollapsed ? '>' : '<' }}
+  </button>
+  <div class="menu-content" *ngIf="!isCollapsed">
+    <a routerLink="/home" routerLinkActive="active"><h2>Menu</h2></a>
+    <ul class="menu-list">
+      <!-- Players Section -->
+      <li>
+        <div class="section-header" (click)="toggleSection('players')">
+          <h3>Players</h3>
+          <span>{{ openSection === 'players' ? '-' : '+' }}</span>
+        </div>
+        <ul class="submenu" *ngIf="openSection === 'players'">
+          <li>
+            <a routerLink="/add-player" routerLinkActive="active">Add a player</a>
+          </li>
+          <li>
+            <a routerLink="/delete-player" routerLinkActive="active">Delete a player</a>
+          </li>
+          <li>
+            <a routerLink="/update-player" routerLinkActive="active">Update a player</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Teams Section -->
+      <li>
+        <div class="section-header" (click)="toggleSection('teams')">
+          <h3>Teams</h3>
+          <span>{{ openSection === 'teams' ? '-' : '+' }}</span>
+        </div>
+        <ul class="submenu" *ngIf="openSection === 'teams'">
+          <li>
+            <a routerLink="/add-team" routerLinkActive="active">Add a team</a>
+          </li>
+          <li>
+            <a routerLink="/delete-team" routerLinkActive="active">Delete a team</a>
+          </li>
+          <li>
+            <a routerLink="/update-team" routerLinkActive="active">Update a team</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Matches Section -->
+      <li>
+        <div class="section-header" (click)="toggleSection('matches')">
+          <h3>Matches</h3>
+          <span>{{ openSection === 'matches' ? '-' : '+' }}</span>
+        </div>
+        <ul class="submenu" *ngIf="openSection === 'matches'">
+          <li>
+            <a routerLink="/add-match" routerLinkActive="active">Add a match</a>
+          </li>
+          <li>
+            <a routerLink="/delete-match" routerLinkActive="active">Delete a match</a>
+          </li>
+          <li>
+            <a routerLink="/update-match" routerLinkActive="active">Update a match</a>
+          </li>
+          <li>
+            <a routerLink="/fill-points" routerLinkActive="active">Fill points</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

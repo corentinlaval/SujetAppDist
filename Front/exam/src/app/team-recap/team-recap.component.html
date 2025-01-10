@@ -1,0 +1,46 @@
+<div class="recap-container">
+  <a routerLink="/rankings" routerLinkActive="active"><h2>Recap</h2></a>
+
+  <!-- Classement des équipes -->
+  <div class="recap-section">
+    <a routerLink="/teams" routerLinkActive="active"><h3>Top Teams</h3></a>
+    <ul class="team-list">
+      <li *ngFor="let team of topTeams" class="team-item">
+        <div class="team-logo">
+          <img *ngIf="team.logo" [src]="team.logo" alt="{{ team.name }}" />
+        </div>
+        <div class="team-info">
+          <h4>{{ team.name }}</h4>
+          <p>{{ team.city }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Top joueurs -->
+  <div class="recap-section">
+    <a routerLink="/players" routerLinkActive="active"><h3>Top Players</h3></a>
+    <ul class="player-list">
+      <li *ngFor="let player of topPlayers" class="player-item">
+        <div class="player-photo">
+          <img *ngIf="player.photo" [src]="player.photo" alt="{{ player.name }}" />
+        </div>
+        <div class="player-info">
+          <h4>{{ player.name }}</h4>
+          <p>Position: {{ player.position }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Prochains matchs -->
+  <div class="recap-section">
+    <a routerLink="/matches" routerLinkActive="active"><h3>Upcoming Matches</h3></a>
+    <ul class="match-list">
+      <li *ngFor="let match of upcomingMatches" class="match-item">
+        <p>{{match.homeTeam?.name }} vs {{ match.awayTeam?.name }}</p>
+        <small>{{ match.date }}</small>
+      </li>
+    </ul>
+  </div>
+</div>

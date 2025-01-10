@@ -1,0 +1,70 @@
+.welcome-container {
+  width: 95%;
+  margin: 20px auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #4caf50;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.welcome-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.welcome-btn {
+  text-decoration: none;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-btn:hover {
+  background-color: #1e7e34;
+}
+
+.date-time {
+  margin: 20px auto; /* Centre horizontalement et ajoute un espace vertical */
+  font-size: 20px;
+  color: #555;
+  background-color: #cccccc;
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  text-align: center; /* Centre le contenu textuel */
+  padding: 10px; /* Ajoute un espace interne pour le contenu */
+}
+
+.date-time .current-date,
+.date-time .current-time {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.date-time .current-time {
+  font-weight: bold;
+  font-size: 22px;
+  color: #4caf50;
+}
+
+.carousel {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}

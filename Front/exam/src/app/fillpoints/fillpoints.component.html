@@ -1,0 +1,124 @@
+<div class="fill-match-container">
+  <h2>Fill Match Points</h2>
+
+  <!-- Informations sur le match sélectionné -->
+  <div *ngIf="selectedMatch" class="form-layout">
+    <!-- Section Team 1 -->
+    <div class="team-section">
+      <div class="logo-preview">
+        <img *ngIf="selectedMatch.team1Logo" [src]="selectedMatch.team1Logo" alt="Team 1 Logo" />
+      </div>
+      <label>{{ selectedMatch.homeTeam?.name | uppercase }}</label>
+    </div>
+
+    <!-- VS Box -->
+    <div class="vs-box">VS</div>
+
+    <!-- Section Team 2 -->
+    <div class="team-section">
+      <div class="logo-preview">
+        <img *ngIf="selectedMatch.team2Logo" [src]="selectedMatch.team2Logo" alt="Team 2 Logo" />
+      </div>
+      <label>{{ selectedMatch.awayTeam?.name | uppercase }}</label>
+    </div>
+  </div>
+
+  <!-- Détails du match -->
+  <div class="match-date-time" *ngIf="selectedMatch">
+    <p><strong>Date:</strong> {{ selectedMatch.matchDate | date: 'dd/MM/yyyy' }}</p>
+    <p *ngIf="selectedMatch.matchTime"><strong>Time:</strong> {{ formatTimeTo24Hour(selectedMatch.matchTime) | date: 'hh:mm a' }}</p>
+    <p *ngIf="!selectedMatch.matchTime"><strong>Time:</strong> N/A</p>
+  </div>
+
+  <!-- Formulaire pour remplir les points -->
+  <form class="form-fields" *ngIf="selectedMatch">
+    <div class="form-group">
+      <label>{{ selectedMatch.homeTeam?.name | uppercase }} Points</label>
+      <input
+        type="number"
+        id="homeScore"
+        [(ngModel)]="selectedMatch.homeScore"
+        name="homeScore"
+        (change)="onScoreChange('home')"
+        placeholder="Enter Home Team Points"
+        min="0"
+      />
+    </div>
+
+    <!-- Sélecteurs dynamiques pour les buteurs de l'équipe à domicile -->
+    <div *ngFor="let scorer of homeScorers; let i = index">
+      <label>Scorer {{ i + 1 }}:</label>
+      <select
+        [(ngModel)]="scorer.playerId"
+        name="homeScorer{{i}}"
+      [ngModelOptions]="{ standalone: true }"
+      >
+      <option *ngFor="let player of selectedMatch.homeTeam?.players" [value]="player.id">
+        {{ player.name }}
+      </option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label>{{ selectedMatch.awayTeam?.name | uppercase }} Points</label>
+      <input
+        type="number"
+        id="awayScore"
+        [(ngModel)]="selectedMatch.awayScore"
+        name="awayScore"
+        (change)="onScoreChange('away')"
+        placeholder="Enter Away Team Points"
+        min="0"
+      />
+    </div>
+
+    <!-- Sélecteurs dynamiques pour les buteurs de l'équipe à l'extérieur -->
+    <div *ngFor="let scorer of awayScorers; let i = index">
+      <label>Scorer {{ i + 1 }}:</label>
+      <select
+        [(ngModel)]="scorer.playerId"
+        name="awayScorer{{i}}"
+      [ngModelOptions]="{ standalone: true }"
+      >
+      <option *ngFor="let player of selectedMatch.awayTeam?.players" [value]="player.id">
+        {{ player.name }}
+      </option>
+      </select>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!selectedMatch"
+      (click)="onFillPoints()"
+    >
+      Submit Points
+    </button>
+  </form>
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search for a match"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <!-- Résultats de recherche -->
+  <ul class="search-results">
+    <li *ngFor="let match of filteredMatches" (click)="selectMatch(match)">
+      <div class="match-info">
+        <p><strong>Teams:</strong> {{ match.homeTeam?.name | uppercase }} <strong>VS</strong> {{ match.awayTeam?.name | uppercase }}</p>
+        <p><strong>Location:</strong> {{ match.location }}</p>
+      </div>
+      <div class="match-info">
+        <p><strong>Date:</strong> {{ match.matchDate | date: 'dd/MM/yyyy' }}</p>
+        <p *ngIf="match.matchTime"><strong>Time:</strong> {{ formatTimeTo24Hour(match.matchTime) | date: 'hh:mm a' }}</p>
+        <p *ngIf="!match.matchTime"><strong>Time:</strong> N/A</p>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,41 @@
+<div class="match-list-container">
+  <h1>Match Schedule</h1>
+
+  <!-- Table des matchs -->
+  <table class="match-table">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Home Team</th>
+      <th>Score</th>
+      <th>Away Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let match of sortedMatches; let i = index">
+      <td>{{ match.matchDate | date: 'dd/MM/yyyy' }}</td>
+      <td>
+        <div class="team-info">
+          <img
+            [src]="match.homeTeam?.logoPath || 'https://via.placeholder.com/50'"
+            alt="{{ match.homeTeam?.name }}"
+          />
+          <span>{{ match.homeTeam?.name }}</span>
+        </div>
+      </td>
+      <td>{{ match.homeScore }} - {{ match.awayScore }}</td>
+      <td>
+        <div class="team-info">
+          <img
+            [src]="match.awayTeam?.logoPath || 'https://via.placeholder.com/50'"
+            alt="{{ match.awayTeam?.name }}"
+          />
+          <span>{{ match.awayTeam?.name }}</span>
+        </div>
+      </td>
+      <td>{{ match.location }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

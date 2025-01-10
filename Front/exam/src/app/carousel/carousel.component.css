@@ -1,0 +1,76 @@
+.carousel-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden; /* Cache les slides hors du cadre */
+  margin: auto;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.carousel-slide {
+  min-width: 100%; /* Assure que chaque slide prend toute la largeur */
+  height: 100%; /* Ajuste la hauteur au conteneur */
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Permet d'aligner l'image et le texte verticalement */
+  align-items: center;
+  justify-content: flex-start; /* Place l'image en haut */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.carousel-slide img {
+  width: 100%; /* Image prend toute la largeur */
+  height: 60%; /* Ajuste la hauteur de l'image */
+  object-fit: cover; /* Garde les proportions de l'image */
+  border-radius: 5px; /* Ajoute des bords arrondis à l'image */
+}
+
+.carousel-slide h2 {
+  margin: 10px 0 5px; /* Espacement entre l'image et le titre */
+  font-size: 16px; /* Taille du texte ajustée */
+  text-align: center; /* Centre le texte */
+  color: #333; /* Couleur du titre */
+  overflow: hidden; /* Cache les débordements */
+  text-overflow: ellipsis; /* Ajoute des "..." si nécessaire */
+  display: -webkit-box; /* Active un conteneur flexible pour limiter les lignes */
+  -webkit-line-clamp: 2; /* Limite le titre à 2 lignes */
+  -webkit-box-orient: vertical; /* Définit une orientation verticale pour les lignes */
+  word-wrap: break-word; /* Coupe les mots trop longs pour éviter les débordements */
+}
+
+.carousel-slide p {
+  font-size: 14px; /* Taille légèrement plus petite pour la description */
+  text-align: center; /* Centre le texte */
+  color: #666; /* Couleur plus douce que le titre */
+  margin: 5px 0 0; /* Espacement entre le titre et le paragraphe */
+  line-height: 1.4; /* Améliore la lisibilité */
+  overflow: hidden; /* Évite les débordements */
+  text-overflow: ellipsis; /* Ajoute des "..." si le texte est trop long */
+  max-height: 40px; /* Limite la hauteur du paragraphe */
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.carousel-dots button {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.carousel-dots button.active {
+  background-color: #4caf50;
+}
