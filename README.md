@@ -199,3 +199,84 @@ Pour exécuter les tests unitaires de l'application Angular, utilisez la command
 ng test
 ```
 
+# 📝 Description de l'application
+
+## 🎯 Objectif du projet
+
+L'application **Sports Manager** a pour but de fournir une solution complète de gestion d'équipes sportives. Elle permet aux utilisateurs de consulter, créer, modifier et supprimer des équipes, des joueurs et des matchs. Cette application est divisée en deux parties principales :
+
+- **Back-end** : Développé avec **Spring Boot** et utilisant **MongoDB** pour le stockage des données.
+- **Front-end** : Développé avec **Angular**, offrant une interface utilisateur fluide et intuitive.
+
+Le projet s'inspire des systèmes de gestion utilisés dans les clubs sportifs pour centraliser les informations et optimiser la gestion des équipes et des événements sportifs.
+
+---
+
+## 🌟 Fonctionnalités principales
+
+- 📋 **Gestion des équipes** :
+    - Ajouter de nouvelles équipes
+    - Modifier les informations des équipes existantes
+    - Supprimer des équipes
+    - Voir les détails des équipes
+
+- 🏃‍♂️ **Gestion des joueurs** :
+    - Ajouter des joueurs aux équipes
+    - Mettre à jour les informations des joueurs
+    - Supprimer des joueurs
+    - Voir les détails des joueurs
+
+- 🏆 **Gestion des matchs** :
+    - Planifier des matchs
+    - Mettre à jour les scores des matchs
+    - Supprimer des matchs
+    - Voir les récapitulatifs des matchs
+
+---
+
+## ⚙️ Technologies utilisées
+
+| Technologie    | Description                              |
+|----------------|------------------------------------------|
+| **Spring Boot** | Framework back-end en Java               |
+| **MongoDB**     | Base de données NoSQL                   |
+| **Angular**     | Framework front-end pour l'interface utilisateur |
+| **Docker**      | Conteneurisation des services            |
+
+---
+
+## 🖼️ Architecture du projet
+
+L'application est composée de deux dossiers principaux :
+- Le dossier `/Back` contient le code du serveur back-end (API REST).
+- Le dossier `/Front` contient le code de l'application front-end Angular.
+
+## 📚 Cas d'utilisation
+
+**Exemple : Gestion d'une équipe de football**
+
+1. 🔧 **Créer une nouvelle équipe** : Le manager peut ajouter une équipe de football avec son nom, son logo et sa ville d'origine.
+
+
+2. 👥 **Ajouter des joueurs** : Le manager peut ensuite ajouter des joueurs à l'équipe, avec leurs noms, numéros et positions.
+
+
+3. 📅 **Planifier un match** : Le manager peut planifier un match, ajouter les scores et suivre les performances de l'équipe.
+
+
+4.  **Consulter les news** : Le manager peut consulter de vrais news de la BBC.
+
+
+5.  **Consulter les classements** : Le manager peut consulter les divers classements des joueurs et équipes.
+
+---
+
+## 🙏 Remerciements
+
+Merci beaucoup pour le temps que vous avez pris pour lire ce document et découvrir mon projet. J'ai investi beaucoup de temps pour concevoir une application complète.
+
+Ce projet représente pour moi un véritable **travail personnel de A à Z**, où j'ai pu mettre en pratique les connaissances acquises durant mes études, mais aussi explorer de nouvelles technologies et relever des défis techniques.
+
+J'ai pris **énormément de plaisir** à le réaliser et à voir le projet prendre forme, étape par étape. Mon objectif était de créer quelque chose de concret, professionnel, et qui puisse, je l'espère, **vous plaire autant qu'il m'a plu à réaliser**.
+
+Merci encore pour votre attention et votre intérêt ! 😊
