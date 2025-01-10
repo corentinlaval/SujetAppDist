@@ -25,9 +25,9 @@ Ce projet a été conçu avec passion pour répondre aux besoins des amateurs de
 
 # 📚 Table des matières
 
-1. [Backend](#Backend)
-2. [Frontend](#Frontend)
-3. [Description de l'application](#Description de l'application)
+1. [Backend](https://github.com/corentinlaval/SujetAppDist?tab=readme-ov-file#backend-spring-boot--mongodb)
+2. [Frontend](https://github.com/corentinlaval/SujetAppDist?tab=readme-ov-file#frontend-angular)
+3. [Description de l'application](https://github.com/corentinlaval/SujetAppDist?tab=readme-ov-file#description-de-lapplication)
 
 ---
 
