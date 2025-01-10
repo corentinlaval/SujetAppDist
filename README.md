@@ -270,6 +270,26 @@ L'application est composée de deux dossiers principaux :
 5.  **Consulter les classements** : Le manager peut consulter les divers classements des joueurs et équipes.
 
 ---
+## 🔄 Évolutions futures
+
+Ce projet est un **point de départ** solide, mais il y a encore de nombreuses améliorations et évolutions que j'aimerais y apporter afin de le rendre **plus complet, sécurisé et professionnel**. Voici quelques pistes d'améliorations que j'envisage pour les futures versions de l'application :
+
+### 🔐 1. Sécurisation de l'API
+La sécurisation de l'API est une priorité. Voici les pistes que j'aimerais explorer :
+- **Implémentation d'un système d'authentification et d'autorisation** via un mécanisme basé sur JWT (JSON Web Token).
+- **Gestion des rôles utilisateurs** (administrateurs, managers, etc.), permettant de limiter les accès à certaines fonctionnalités selon les privilèges de chaque utilisateur.
+- **Mise en place de protections contre les attaques courantes** : injections SQL, Cross-Site Scripting (XSS), etc.
+- **Cryptage des données sensibles** stockées dans la base de données, comme les mots de passe utilisateurs.
+
+### 📦 2. Script d’initialisation de la base de données
+L'une des améliorations majeures serait la création d'un **script d'insertion automatique de données** pour la base MongoDB. L'objectif est de fournir un ensemble de données par défaut afin de pouvoir tester l'application dès son installation.
+
+Le script pourrait :
+- **Créer des utilisateurs de test** avec différents rôles.
+- **Générer automatiquement des équipes, des joueurs, des matchs, etc.** pour avoir un exemple concret dès le démarrage.
+- **Prévoir des données réalistes** pour rendre l'expérience plus immersive.
+
+----
 
 ## 🙏 Remerciements
 
@@ -278,5 +298,7 @@ Merci beaucoup pour le temps que vous avez pris pour lire ce document et découv
 Ce projet représente pour moi un véritable **travail personnel de A à Z**, où j'ai pu mettre en pratique les connaissances acquises durant mes études, mais aussi explorer de nouvelles technologies et relever des défis techniques.
 
 J'ai pris **énormément de plaisir** à le réaliser et à voir le projet prendre forme, étape par étape. Mon objectif était de créer quelque chose de concret, professionnel, et qui puisse, je l'espère, **vous plaire autant qu'il m'a plu à réaliser**.
+
+Je tiens à préciser que le **README n’est peut-être pas aussi détaillé** ou bien présenté que je l'aurais souhaité, par manque de temps. J’aurais aimé m’y consacrer davantage pour vous offrir une documentation plus aboutie, mais j'ai préféré me concentrer sur la réalisation de l'application elle-même. **J’espère toutefois que vous trouverez ce guide suffisamment clair pour prendre en main le projet.**
 
 Merci encore pour votre attention et votre intérêt ! 😊
